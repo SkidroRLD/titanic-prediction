@@ -46,8 +46,8 @@ def read_csv(path = path, modeltype = 'Pytorch'):
     gender_dict = {"male" : 0, "female" : 1}
     train['Sex'] = train['Sex'].map(gender_dict)
     test['Sex'] = test['Sex'].map(gender_dict)
-    test = test.dropna()
-    train = train.dropna()
+    test = test.fillna(0)
+    train = train.fillna(0)
     if modeltype == 'Pytorch':
         train, test = convert_csv(train, test)  
     return train, test
